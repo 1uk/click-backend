@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDateTime
 
 @RestController
-class HtmlController(private val wordRepository: WordRepository) {
+class HtmlController(private val wordRepository: WordRepository, private val sentenceRepository: SentenceRepository) {
 
     @GetMapping("/")
     fun findAll() = wordRepository.findAll()
 
     @PostMapping("/")
-    fun saveAll(@RequestBody wordList: ArrayList<Word>) {
-        System.out.println("received the following: " + wordList.toString())
-        fun saveAll() = wordRepository.saveAll(wordList)
+    fun saveAll(@RequestBody sentence: Sentence) {
+        System.out.println("received the following: " + sentence.toString())
     }
 }
